@@ -30,12 +30,18 @@
     #count {
       color: #333333;
     }
+    #message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d9480f;
+    }
   </style>
 </head>
 <body>
   <!-- 画面に表示される部分（HTML） -->
   <button id="colorButton">押してみて</button>
   <p id="count">まだ押されていません</p>
+  <p id="message" hidden>🎉 おめでとう！ 🎉</p>
 
   <script>
     // 動きの設定（JavaScript）
@@ -46,6 +52,11 @@
       clicks++;
       document.body.style.background = colors[clicks % colors.length];
       document.getElementById("count").textContent = clicks + " 回押されました";
+
+      // 10回押したら、おめでとうのメッセージを表示する
+      if (clicks === 10) {
+        document.getElementById("message").hidden = false;
+      }
     });
   </script>
 </body>
