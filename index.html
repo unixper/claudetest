@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>色が変わるボタン</title>
+  <style>
+    /* 見た目の設定（CSS） */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-family: sans-serif;
+      background: #ffffff;
+      transition: background 0.4s;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 999px;
+      background: #333333;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    #count {
+      color: #333333;
+    }
+    #message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d9480f;
+      /* 最初は見えないが、場所は確保しておく（ボタンが動かないように） */
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- 画面に表示される部分（HTML） -->
+  <button id="colorButton">押してみて</button>
+  <p id="count">まだ押されていません</p>
+  <p id="message">🎉 おめでとう！ 🎉</p>
+
+  <script>
+    // 動きの設定（JavaScript）
+    const colors = ["#ffd6d6", "#fff3c4", "#d6f5d6", "#d6e8ff", "#ecd6ff"];
+    let clicks = 0;
+
+    document.getElementById("colorButton").addEventListener("click", () => {
+      clicks++;
+      document.body.style.background = colors[clicks % colors.length];
+      document.getElementById("count").textContent = clicks + " 回押されました";
+
+      // 10回押したら、おめでとうのメッセージを表示する
+      if (clicks === 10) {
+        document.getElementById("message").style.visibility = "visible";
+      }
+
+      // 20回押したら、おめでとうのメッセージを消す
+      if (clicks === 20) {
+        document.getElementById("message").style.visibility = "hidden";
+      }
+    });
+  </script>
+</body>
+</html>
