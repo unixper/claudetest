@@ -34,6 +34,8 @@
       font-size: 2rem;
       font-weight: bold;
       color: #d9480f;
+      /* 最初は見えないが、場所は確保しておく（ボタンが動かないように） */
+      visibility: hidden;
     }
   </style>
 </head>
@@ -41,7 +43,7 @@
   <!-- 画面に表示される部分（HTML） -->
   <button id="colorButton">押してみて</button>
   <p id="count">まだ押されていません</p>
-  <p id="message" hidden>🎉 おめでとう！ 🎉</p>
+  <p id="message">🎉 おめでとう！ 🎉</p>
 
   <script>
     // 動きの設定（JavaScript）
@@ -55,12 +57,12 @@
 
       // 10回押したら、おめでとうのメッセージを表示する
       if (clicks === 10) {
-        document.getElementById("message").hidden = false;
+        document.getElementById("message").style.visibility = "visible";
       }
 
       // 20回押したら、おめでとうのメッセージを消す
       if (clicks === 20) {
-        document.getElementById("message").hidden = true;
+        document.getElementById("message").style.visibility = "hidden";
       }
     });
   </script>
