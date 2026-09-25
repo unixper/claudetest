@@ -57,6 +57,11 @@
       if (clicks === 10) {
         document.getElementById("message").hidden = false;
       }
+
+      // 20回押したら、おめでとうのメッセージを消す
+      if (clicks === 20) {
+        document.getElementById("message").hidden = true;
+      }
     });
   </script>
 </body>
